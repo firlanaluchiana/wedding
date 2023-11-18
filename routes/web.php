@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\WeddingController;
+use App\Http\Controllers\{WeddingController, AdminController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +22,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
     Route::resource('wedding', WeddingController::class);
 });
+
+Route::get('/storage/{any}', function ($any) {
+    return response()->file(storage_path('app/' . $any));
+})->where('any', '.*');

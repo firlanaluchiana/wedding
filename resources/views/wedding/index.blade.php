@@ -1,48 +1,77 @@
-<x-app-layout>
-    <x-slot name="header">
-        <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Wedding') }}
-            </h2>
-            <a href="{{ route('wedding.create') }}" class="btn btn-primary">Create</a>
-        </div>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
-                    <table class="table">
+@extends('layouts.admin')
+@section('content')
+    <div class="page-heading">
+        <h3>Wedding</h3>
+    </div>
+    <section class="section">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-between">
+                    <h5 class="card-title">
+                        Wedding
+                    </h5>
+                    <a href="{{ route('wedding.create') }}" class="btn btn-primary btn-sm">Create</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table" id="table1">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th>No.</th>
+                                <th>Groom Name</th>
+                                <th>Groom Image</th>
+                                <th>Bride Name</th>
+                                <th>Bride Image</th>
+                                <th>Wedding Date</th>
+                                <th>Venue</th>
+                                <th>City</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            @foreach ($weddings as $wedding)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $wedding->groom_name }}</td>
+                                    <td>
+                                        <div class="avatar avatar-lg me-3">
+                                            <img src="{{ secure_url('storage/' . $wedding->groom_image) }}"
+                                                alt="{{ $wedding->groom_name }}" srcset="">
+                                        </div>
+                                    </td>
+                                    <td>{{ $wedding->bride_name }}</td>
+                                    <td>
+                                        <div class="avatar avatar-lg me-3">
+                                            <img src="{{ secure_url('storage/' . $wedding->bride_image) }}"
+                                                alt="{{ $wedding->bride_name }}" srcset="">
+                                        </div>
+                                    </td>
+                                    <td>{{ $wedding->wedding_date }}</td>
+                                    <td>{{ $wedding->venue }}</td>
+                                    <td>{{ $wedding->city }}</td>
+                                    <td>
+                                        <span class="badge bg-success"><i class="bi bi-eye"></i></span>
+                                        <a href="{{ route('wedding.edit', $wedding->id) }}"
+                                            class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i></a>
+                                        <form action="{{ route('wedding.destroy', $wedding->id) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-sm btn-danger"
+                                                onclick="return confirm('Yakin ingin menghapus data?')">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    </td>
+                                </tr>s
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-    </div>
-</x-app-layout>
+
+    </section>
+@endsection
