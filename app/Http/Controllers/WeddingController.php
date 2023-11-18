@@ -48,7 +48,7 @@ class WeddingController extends Controller
 
         Wedding::create($validated);
 
-        return redirect()->route('weddings.index');
+        return redirect()->route('wedding.index');
     }
 
     /**
