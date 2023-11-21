@@ -473,75 +473,76 @@
                     </div>
 
                     <div class="col-md-6 animate-box">
-                        <div class="fh5co-video fh5co-bg" style="background-image: url(images/img_bg_3.jpg); ">
-                            <a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i
-                                    class="icon-video2"></i></a>
-                            <div class="overlay"></div>
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/2Vv-BfVoq4g?si=YUMO_QT4uEDRZI7L&amp;controls=0&amp;start=48"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                        <div class="overlay"></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div id="fh5co-started" class="fh5co-bg" style="background-image:url(images/sakura.jpg);">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row animate-box">
+                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                    <h2>Are You Attending?</h2>
+                    <p>Please Fill-up the form to notify you that you're attending. Thanks.</p>
+                </div>
+            </div>
+            <div class="row animate-box">
+                <div class="col-md-10 col-md-offset-1">
+                    <form class="form-inline">
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <label for="name" class="sr-only">Name</label>
+                                <input type="name" class="form-control" id="name" placeholder="Name">
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-
-
-        <div id="fh5co-started" class="fh5co-bg" style="background-image:url(images/sakura.jpg);">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row animate-box">
-                    <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-                        <h2>Are You Attending?</h2>
-                        <p>Please Fill-up the form to notify you that you're attending. Thanks.</p>
-                    </div>
-                </div>
-                <div class="row animate-box">
-                    <div class="col-md-10 col-md-offset-1">
-                        <form class="form-inline">
-                            <div class="col-md-4 col-sm-4">
-                                <div class="form-group">
-                                    <label for="name" class="sr-only">Name</label>
-                                    <input type="name" class="form-control" id="name" placeholder="Name">
-                                </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email">
                             </div>
-                            <div class="col-md-4 col-sm-4">
-                                <div class="form-group">
-                                    <label for="email" class="sr-only">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-4">
-                                <button type="submit" class="btn btn-default btn-block">I am Attending</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <button type="submit" class="btn btn-default btn-block">I am Attending</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 
-        <footer id="fh5co-footer" role="contentinfo">
-            <div class="container">
+    <footer id="fh5co-footer" role="contentinfo">
+        <div class="container">
 
-                <div class="row copyright">
-                    <div class="col-md-12 text-center">
-                        <p>
-                            <small class="block">&copy; 2025 Free HTML5. All Rights Reserved.</small>
-                            <small class="block">Designed by <a href="http://freehtml5.co/"
-                                    target="_blank">FREEHTML5.co</a> Demo Images: <a href="http://unsplash.co/"
-                                    target="_blank">Unsplash</a></small>
-                        </p>
-                        <p>
-                        <ul class="fh5co-social-icons">
-                            <li><a href="#"><i class="icon-twitter"></i></a></li>
-                            <li><a href="#"><i class="icon-facebook"></i></a></li>
-                            <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                            <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                        </ul>
-                        </p>
-                    </div>
+            <div class="row copyright">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <small class="block">&copy; 2025 Free HTML5. All Rights Reserved.</small>
+                        <small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a>
+                            Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+                    </p>
+                    <p>
+                    <ul class="fh5co-social-icons">
+                        <li><a href="#"><i class="icon-twitter"></i></a></li>
+                        <li><a href="#"><i class="icon-facebook"></i></a></li>
+                        <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                        <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    </ul>
+                    </p>
                 </div>
-
             </div>
-        </footer>
+
+        </div>
+    </footer>
     </div>
 @endsection
