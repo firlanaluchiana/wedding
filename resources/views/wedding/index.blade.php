@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+    @include('sweetalert::alert')
     <div class="page-heading">
         <h3>Wedding</h3>
     </div>

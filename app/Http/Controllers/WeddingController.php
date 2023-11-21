@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Wedding;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+Use Alert;
 
 class WeddingController extends Controller
 {
@@ -29,7 +30,7 @@ class WeddingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'groom_name' => 'required',
@@ -48,7 +49,7 @@ class WeddingController extends Controller
 
         Wedding::create($validated);
 
-        return redirect()->route('wedding.index');
+        return redirect()->route('wedding.index')->withToastSuccess('Project created successfully.');
     }
 
     /**
@@ -74,7 +75,7 @@ class WeddingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id): ReddirectResponse
+    public function update(Request $request, $id)
     {
         $wedding = Wedding::where('id', $id)->firstOrFail();
 
@@ -99,7 +100,7 @@ class WeddingController extends Controller
 
         $wedding->update($validated);
 
-        return redirect()->route('wedding.index');
+        return redirect()->route('wedding.index')->withToastSuccess('Project updated successfully.');
     }
 
     /**
@@ -111,6 +112,6 @@ class WeddingController extends Controller
 
         $wedding->delete();
 
-        return redirect()->route('wedding.index');
+        return redirect()->route('wedding.index')->withToastSuccess('Project deleted successfully.');
     }
 }

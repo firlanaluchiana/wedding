@@ -1,43 +1,14 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js"> <!--<![endif]-->
+<html class="no-js">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Wedding</title>
+    <title>{{ config('app.name', 'Wedding') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
-    <meta name="keywords" content="wedding" />
+    <meta name="description" content="Undangan, Wedding, Invitation" />
+    <meta name="keywords" content="wedding, laravel, web, portfolio" />
     <meta name="author" content="Firlana Luchiana Dewi" />
-
-    <!--
- //////////////////////////////////////////////////////
-
- FREE HTML5 TEMPLATE
- DESIGNED & DEVELOPED by FREEHTML5.CO
-
- Website: 		http://freehtml5.co/
- Email: 			info@freehtml5.co
- Twitter: 		http://twitter.com/fh5co
- Facebook: 		https://www.facebook.com/fh5co
-
- //////////////////////////////////////////////////////
- -->
-
-    <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content="" />
-    <meta property="og:image" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:site_name" content="" />
-    <meta property="og:description" content="" />
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:image" content="" />
-    <meta name="twitter:url" content="" />
-    <meta name="twitter:card" content="" />
 
     <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet'
         type='text/css'>
@@ -61,11 +32,7 @@
     <link rel="stylesheet" href="{{ asset('tehome/css/style.css') }}">
 
     <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
-    <!-- FOR IE9 below -->
-    <!--[if lt IE 9]>
- <script src="js/respond.min.js"></script>
- <![endif]-->
+    <script src="{{ asset('tehome/js/modernizr-2.6.2.min.js') }}"></script>
 
 </head>
 
@@ -83,26 +50,9 @@
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
                             <li class="active"><a href="index.html">Home</a></li>
-                            <li><a href="about.html">Story</a></li>
-                            <li class="has-dropdown">
-                                <a href="services.html">Services</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">Web Design</a></li>
-                                    <li><a href="#">eCommerce</a></li>
-                                    <li><a href="#">Branding</a></li>
-                                    <li><a href="#">API</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-dropdown">
-                                <a href="gallery.html">Gallery</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">HTML5</a></li>
-                                    <li><a href="#">CSS3</a></li>
-                                    <li><a href="#">Sass</a></li>
-                                    <li><a href="#">jQuery</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="#wedding_event">Event</a></li>
+                            <li><a href="#story">Story</a></li>
+                            <li><a href="#wedding_gallery">Wedding Gallery</a></li>
                         </ul>
                     </div>
                 </div>
@@ -119,9 +69,7 @@
                     <div class="col-md-8 col-md-offset-2 text-center">
                         <div class="display-t">
                             <div class="display-tc animate-box" data-animate-effect="fadeIn">
-                                @foreach ($weddings as $wedding)
-                                    <h1>{{ $wedding->groom_name }} &amp; {{ $wedding->bride_name }}</h1>
-                                @endforeach
+                                <h1>Hinata Hyuga &amp; Natuto Uzumaki</h1>
                                 <h2>We Are Getting Married</h2>
                                 <div class="simply-countdown simply-countdown-one"></div>
                                 <p><a href="#" class="btn btn-default btn-sm">Save the date</a></p>
@@ -134,39 +82,39 @@
 
         <div id="fh5co-couple">
             <div class="container">
-                @foreach ($weddings as $wedding)
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-                            <h2>Hello!</h2>
-                            <h1>{{ $wedding->groom_name }} &amp; {{ $wedding->bride_name }}</h1>
-                            <h3>{{ $wedding->wedding_date }} {{ $wedding->venue }}, {{ $wedding->city }}</h3>
-                            <p>We invited you to celebrate our wedding</p>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+                        <h2>Hello!</h2>
+                        <h1>Hinata Hyuga &amp; Naruto Uzumaki</h1>
+                        <h3>November 28th, 2025 Kantor Desa, Konoha</h3>
+                        <p>We invited you to celebrate our wedding</p>
+                    </div>
+                </div>
+                <div class="couple-wrap animate-box">
+                    <div class="couple-half">
+                        <div class="groom">
+                            <img src="{{ asset('tehome/images/hinata.jpg') }}" alt="Hinata Hyuga"
+                                class="img-responsive">
+                        </div>
+                        <div class="desc-groom">
+                            <h3>Hinata Hyuga</h3>
+                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                                there live the blind texts. Separated they live in Bookmarksgrove</p>
                         </div>
                     </div>
-                    <div class="couple-wrap animate-box">
-                        <div class="couple-half">
-                            <div class="groom">
-                                <img src="{{ secure_url('storage/' . $wedding->groom_image) }}"
-                                    alt="{{ $wedding->groom_name }}" class="img-responsive">
-                            </div>
-                            <div class="desc-groom">
-                                <h3>{{ $wedding->groom_name }}</h3>
-                                <p>{{ $wedding->groom_bio }}</p>
-                            </div>
+                    <p class="heart text-center"><i class="icon-heart2"></i></p>
+                    <div class="couple-half">
+                        <div class="bride">
+                            <img src="{{ asset('tehome/images/naruto.jpg') }}" alt="Naruto Uzumaki"
+                                class="img-responsive">
                         </div>
-                        <p class="heart text-center"><i class="icon-heart2"></i></p>
-                        <div class="couple-half">
-                            <div class="bride">
-                                <img src="{{ secure_url('storage/' . $wedding->bride_image) }}"
-                                    alt="{{ $wedding->bride_name }}" class="img-responsive">
-                            </div>
-                            <div class="desc-bride">
-                                <h3>{{ $wedding->bride_name }}</h3>
-                                <p>{{ $wedding->bride_bio }}</p>
-                            </div>
+                        <div class="desc-bride">
+                            <h3>Naruto Uzumaki</h3>
+                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                                there live the blind texts. Separated they live in Bookmarksgrove</p>
                         </div>
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
 
@@ -176,7 +124,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
                         <span>Our Special Events</span>
-                        <h2>Wedding Events</h2>
+                        <h2 id="wedding_event">Wedding Events</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -233,7 +181,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
                         <span>We Love Each Other</span>
-                        <h2>Our Story</h2>
+                        <h2 id="story">Our Story</h2>
                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                             there live the blind texts.</p>
                     </div>
@@ -243,11 +191,11 @@
                         <ul class="timeline animate-box">
                             <li class="animate-box">
                                 <div class="timeline-badge"
-                                    style="background-image:url({{ asset('tehome/images/wedding-bg.jpg') }});"></div>
+                                    style="background-image:url({{ asset('tehome/images/cpw.jpg') }});"></div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
                                         <h3 class="timeline-title">First We Meet</h3>
-                                        <span class="date">December 25, 2015</span>
+                                        <span class="date">December 25, 2023</span>
                                     </div>
                                     <div class="timeline-body">
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and
@@ -259,11 +207,11 @@
                             </li>
                             <li class="timeline-inverted animate-box">
                                 <div class="timeline-badge"
-                                    style="background-image:url({{ asset('tehome/images/wedding-bg.jpg') }});"></div>
+                                    style="background-image:url({{ asset('tehome/images/cpw1.jpg') }});"></div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
                                         <h3 class="timeline-title">First Date</h3>
-                                        <span class="date">December 28, 2015</span>
+                                        <span class="date">December 28, 2023</span>
                                     </div>
                                     <div class="timeline-body">
                                         <p>Far far away, behind the word mountains, far from the countries Vokalia and
@@ -275,7 +223,7 @@
                             </li>
                             <li class="animate-box">
                                 <div class="timeline-badge"
-                                    style="background-image:url({{ asset('tehome/images/wedding-bg.jpg') }});"></div>
+                                    style="background-image:url({{ asset('tehome/images/cpw2.jpg') }});"></div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
                                         <h3 class="timeline-title">In A Relationship</h3>
@@ -300,7 +248,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
                         <span>Our Memories</span>
-                        <h2>Wedding Gallery</h2>
+                        <h2 id="wedding_gallery">Wedding Gallery</h2>
                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                             there live the blind texts.</p>
                     </div>
@@ -319,7 +267,7 @@
                                 </a>
                             </li>
                             <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/wedding-bg.jpg') }});">
+                                style="background-image:url({{ asset('tehome/images/cpw.jpg') }});">
                                 <a href="#" class="color-2">
                                     <div class="case-studies-summary">
                                         <span>30 Photos</span>
@@ -330,7 +278,7 @@
 
 
                             <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/wedding-bg.jpg') }});">
+                                style="background-image:url({{ asset('tehome/images/cpw1.jpg') }});">
                                 <a href="#" class="color-3">
                                     <div class="case-studies-summary">
                                         <span>90 Photos</span>
@@ -339,7 +287,7 @@
                                 </a>
                             </li>
                             <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/wedding-bg.jpg') }});">
+                                style="background-image:url({{ asset('tehome/images/cpw2.jpg') }});">
                                 <a href="#" class="color-4">
                                     <div class="case-studies-summary">
                                         <span>12 Photos</span>
@@ -349,7 +297,7 @@
                             </li>
 
                             <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/wedding-bg.jpg') }});">
+                                style="background-image:url({{ asset('tehome/images/cpw3.jpg') }});">
                                 <a href="#" class="color-3">
                                     <div class="case-studies-summary">
                                         <span>50 Photos</span>
@@ -358,7 +306,7 @@
                                 </a>
                             </li>
                             <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/wedding-bg.jpg') }});">
+                                style="background-image:url({{ asset('tehome/images/cpw.jpg') }});">
                                 <a href="#" class="color-4">
                                     <div class="case-studies-summary">
                                         <span>45 Photos</span>
@@ -368,7 +316,7 @@
                             </li>
 
                             <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/wedding-bg.jpg') }});">
+                                style="background-image:url({{ asset('tehome/images/cpw1.jpg') }});">
                                 <a href="#" class="color-4">
                                     <div class="case-studies-summary">
                                         <span>35 Photos</span>
@@ -378,7 +326,7 @@
                             </li>
 
                             <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/wedding-bg.jpg') }});">
+                                style="background-image:url({{ asset('tehome/images/cpw2.jpg') }});">
                                 <a href="#" class="color-5">
                                     <div class="case-studies-summary">
                                         <span>90 Photos</span>
@@ -387,7 +335,7 @@
                                 </a>
                             </li>
                             <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/wedding-bg.jpg') }});">
+                                style="background-image:url({{ asset('tehome/images/cpw3.jpg') }});">
                                 <a href="#" class="color-6">
                                     <div class="case-studies-summary">
                                         <span>56 Photos</span>
@@ -475,10 +423,9 @@
                                     <div class="item">
                                         <div class="testimony-slide active text-center">
                                             <figure>
-                                                <img src="{{ secure_url('storage/' . $wedding->bride_image) }}"
-                                                    alt="user">
+                                                <img src="{{ asset('tehome/images/hinata.jpg') }}" alt="user">
                                             </figure>
-                                            <span>Pinjam Dulu Seratus, via <a href="#"
+                                            <span>Hinata Hyuga, via <a href="#"
                                                     class="twitter">Twitter</a></span>
                                             <blockquote>
                                                 <p>"Far far away, behind the word mountains, far from the countries
@@ -490,8 +437,8 @@
                                     <div class="item">
                                         <div class="testimony-slide active text-center">
                                             <figure>
-                                                <img src="{{ secure_url('storage/' . $wedding->bride_image) }}"
-                                                    alt="user">
+                                                <img src="{{ asset('tehome/images/hinata.jpg') }}"
+                                                    alt="Hinata Hyuga">
                                             </figure>
                                             <span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
                                             <blockquote>
@@ -504,8 +451,8 @@
                                     <div class="item">
                                         <div class="testimony-slide active text-center">
                                             <figure>
-                                                <img src="{{ secure_url('storage/' . $wedding->bride_image) }}"
-                                                    alt="user">
+                                                <img src="{{ asset('tehome/images/hinata.jpg') }}"
+                                                    alt="Hinata Hyuga">
                                             </figure>
                                             <span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
                                             <blockquote>
