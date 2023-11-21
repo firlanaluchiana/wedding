@@ -51,6 +51,13 @@ class WeddingController extends Controller
             'groom_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'bride_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'wedding_date' => 'required',
+            'ceremony' => 'required',
+            'ceremony_start' => 'required',
+            'ceremony_end' => 'required',
+            'party' => 'required',
+            'party_start' => 'required',
+            'party_end' => 'required',
+            'street' => 'required',
             'venue' => 'required',
             'city' => 'required',
         ]);

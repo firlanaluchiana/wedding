@@ -62,6 +62,53 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
+                                        <label for="ceremony">Ceremony</label>
+                                        <textarea class="form-control" id="ceremony" name="ceremony" rows="3" placeholder="ceremony"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="ceremony_start">Ceremony Start</label>
+                                        <input type="datetime-local" id="ceremony_start" name="ceremony_start"
+                                            class="form-control round">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="ceremony_end">Ceremony End</label>
+                                        <input type="datetime-local" id="ceremony_end" name="ceremony_end"
+                                            class="form-control round">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="party">Party</label>
+                                        <textarea class="form-control" id="party" name="party" rows="3" placeholder="party"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="party_start">Party Start</label>
+                                        <input type="datetime-local" id="party_start" name="party_start"
+                                            class="form-control round">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="party_end">Party End</label>
+                                        <input type="datetime-local" id="party_end" name="party_end"
+                                            class="form-control round">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="street">Street</label>
+                                        <input type="text" id="street" name="street" class="form-control round"
+                                            placeholder="Street">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
                                         <label for="venue">Venue</label>
                                         <input type="text" id="venue" name="venue" class="form-control round"
                                             placeholder="Venue">

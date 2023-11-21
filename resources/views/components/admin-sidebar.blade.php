@@ -62,13 +62,6 @@
 
                 <li class="sidebar-item">
                     <a href="" class='sidebar-link'>
-                        <i class="bi bi-calendar-date-fill"></i>
-                        <span>Event</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a href="" class='sidebar-link'>
                         <i class="bi bi-book-fill"></i>
                         <span>Story</span>
                     </a>

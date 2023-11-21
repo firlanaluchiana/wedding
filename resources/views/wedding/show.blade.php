@@ -94,18 +94,17 @@
                                         <h3>Main Ceremony</h3>
                                         <div class="event-col">
                                             <i class="icon-clock"></i>
-                                            <span>4:00 PM</span>
-                                            <span>6:00 PM</span>
+                                            <span>{{ \Carbon\Carbon::parse($wedding->ceremony_start)->format('H:i') . ' WIB' }}</span>
+                                            <span>{{ \Carbon\Carbon::parse($wedding->ceremony_end)->format('H:i') . ' WIB' }}</span>
                                         </div>
                                         <div class="event-col">
                                             <i class="icon-calendar"></i>
-                                            <span>Monday 28</span>
-                                            <span>November, 2025</span>
+                                            <span>{{ \Carbon\Carbon::parse($wedding->ceremony_start)->format('l, d') }}
+                                            </span>
+                                            <span>{{ \Carbon\Carbon::parse($wedding->ceremony_start)->format('F Y') }}
+                                            </span>
                                         </div>
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                            Consonantia, there live the blind texts. Separated they live in
-                                            Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-                                        </p>
+                                        <p>{{ $wedding->ceremony }}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 text-center">
@@ -113,18 +112,17 @@
                                         <h3>Wedding Party</h3>
                                         <div class="event-col">
                                             <i class="icon-clock"></i>
-                                            <span>7:00 PM</span>
-                                            <span>12:00 AM</span>
+                                            <span>{{ \Carbon\Carbon::parse($wedding->party_start)->format('H:i') . ' WIB' }}</span>
+                                            <span>{{ \Carbon\Carbon::parse($wedding->party_start)->format('H:i') . ' WIB' }}</span>
                                         </div>
                                         <div class="event-col">
                                             <i class="icon-calendar"></i>
-                                            <span>Monday 28</span>
-                                            <span>November, 2025</span>
+                                            <span>{{ \Carbon\Carbon::parse($wedding->party_start)->format('l, d') }}
+                                            </span>
+                                            <span>{{ \Carbon\Carbon::parse($wedding->party_start)->format('F Y') }}
+                                            </span>
                                         </div>
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                            Consonantia, there live the blind texts. Separated they live in
-                                            Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-                                        </p>
+                                        <p>{{ $wedding->party }}</p>
                                     </div>
                                 </div>
                             </div>

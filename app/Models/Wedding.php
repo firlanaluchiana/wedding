@@ -19,6 +19,13 @@ class Wedding extends Model
         'groom_image',
         'bride_image',
         'wedding_date',
+        'ceremony',
+        'ceremony_start',
+        'ceremony_end',
+        'party',
+        'party_start',
+        'party_end',
+        'street',
         'venue',
         'city',
         'slug'
