@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Wedding;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 Use Alert;
@@ -44,6 +45,14 @@ class WeddingController extends Controller
             'city' => 'required',
         ]);
 
+        $slug = Str::slug($validated['groom_name']);
+        $validated['slug'] = $slug;
+
+            if (Wedding::where('slug', $slug)->exists()) {
+            $slug .= '-' . Str::slug($request->bride_name) . '-' . $request->wedding_date;
+            $validated['slug'] = $slug;
+            }
+
         $validated['groom_image'] = $request->file('groom_image')->store('groom_images');
         $validated['bride_image'] = $request->file('bride_image')->store('bride_images');
 
@@ -55,17 +64,23 @@ class WeddingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Wedding $wedding)
+    public function showBySlug(Wedding $wedding, $slug): Response
     {
-        //
+    $wedding = Wedding::where('slug', $slug)->first();
+
+    if ($wedding) {
+        return response()->view('wedding.show', ['wedding' => $wedding]);
+        } else {
+        return abort(404);
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id): Response
+    public function edit($slug): Response
     {
-        $wedding = Wedding::where('id', $id)->firstOrFail();
+        $wedding = Wedding::where('slug', $slug)->firstOrFail();
 
         return response()->view('wedding.edit', [
             'wedding' => $wedding,
@@ -75,9 +90,9 @@ class WeddingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        $wedding = Wedding::where('id', $id)->firstOrFail();
+        $wedding = Wedding::where('slug', $slug)->firstOrFail();
 
         $validated = $request->validate([
             'groom_name' => 'required',
@@ -90,6 +105,14 @@ class WeddingController extends Controller
             'venue' => 'required',
             'city' => 'required',
         ]);
+
+        $slug = Str::slug($validated['groom_name']);
+        $validated['slug'] = $slug;
+
+            if (Wedding::where('slug', $slug)->exists()) {
+            $slug .= '-' . Str::slug($request->bride_name);
+            $validated['slug'] = $slug;
+            }
 
         if ($request->hasFile('groom_image', 'bride_image')) {
             Storage::delete($wedding->groom_images);
@@ -106,9 +129,9 @@ class WeddingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id): RedirectResponse
+    public function destroy($slug)
     {
-        $wedding = Wedding::where('id', $id)->firstOrFail();
+        $wedding = Wedding::where('slug', $slug)->firstOrFail();
 
         $wedding->delete();
 

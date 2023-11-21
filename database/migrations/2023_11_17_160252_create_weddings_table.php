@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('wedding_date');
             $table->string('venue');
             $table->string('city');
+            $table->string('slug');
             $table->timestamps();
         });
     }

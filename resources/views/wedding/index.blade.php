@@ -52,10 +52,11 @@
                                     <td>{{ $wedding->venue }}</td>
                                     <td>{{ $wedding->city }}</td>
                                     <td>
-                                        <span class="badge bg-success"><i class="bi bi-eye"></i></span>
-                                        <a href="{{ route('wedding.edit', $wedding->id) }}"
+                                        <a href="{{ route('wedding.showBySlug', $wedding->slug) }}"
+                                            class="btn btn-success btn-sm"><i class="bi bi-eye"></i></a>
+                                        <a href="{{ route('wedding.edit', $wedding->slug) }}"
                                             class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i></a>
-                                        <form action="{{ route('wedding.destroy', $wedding->id) }}" method="POST"
+                                        <form action="{{ route('wedding.destroy', $wedding->slug) }}" method="POST"
                                             class="d-inline">
                                             @csrf
                                             @method('delete')

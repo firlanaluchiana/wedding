@@ -18,6 +18,7 @@ class Wedding extends Model
         'bride_image',
         'wedding_date',
         'venue',
-        'city'
+        'city',
+        'slug'
     ];
 }

@@ -22,7 +22,14 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
-    Route::resource('wedding', WeddingController::class);
+    Route::get('/wedding', [WeddingController::class, 'index'])->name('wedding.index');
+    Route::get('/wedding/create', [WeddingController::class, 'create'])->name('wedding.create');
+    Route::post('/wedding', [WeddingController::class, 'store'])->name('wedding.store');
+    Route::get('/wedding/{slug}', [WeddingController::class, 'showBySlug'])->name('wedding.showBySlug');
+    Route::get('/wedding/{slug}/edit', [WeddingController::class, 'edit'])->name('wedding.edit');
+    Route::put('/wedding/{slug}', [WeddingController::class, 'update'])->name('wedding.update');
+    Route::delete('/wedding/{slug}', [WeddingController::class, 'destroy'])->name('wedding.destroy');
+
 });
 
 Route::get('/storage/{any}', function ($any) {

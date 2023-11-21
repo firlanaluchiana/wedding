@@ -12,7 +12,7 @@
                     </div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('wedding.update', $wedding->id) }}"
+                        <form method="POST" action="{{ route('wedding.update', $wedding->slug) }}"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
