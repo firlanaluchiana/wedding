@@ -11,7 +11,8 @@
                     <h5 class="card-title">
                         Wedding
                     </h5>
-                    <a href="{{ route('wedding.create') }}" class="btn btn-primary btn-sm">Create</a>
+                    <a href="{{ route('wedding.create') }}" class="btn btn-primary btn-sm"><i
+                            class="bi bi-plus-circle"></i></a>
                 </div>
             </div>
             <div class="card-body">

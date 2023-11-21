@@ -60,6 +60,35 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item">
+                    <a href="" class='sidebar-link'>
+                        <i class="bi bi-calendar-date-fill"></i>
+                        <span>Event</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="" class='sidebar-link'>
+                        <i class="bi bi-book-fill"></i>
+                        <span>Story</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="" class='sidebar-link'>
+                        <i class="bi bi-image-fill"></i>
+                        <span>Gallery</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="" class='sidebar-link'>
+                        <i class="bi bi-people-fill"></i>
+                        <span>Friends</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-title">Settings</li>
                 <li class="sidebar-item {{ request()->routeIs('profile.*') ? 'active' : '' }}">
                     <a href="{{ route('profile.show') }}" class='sidebar-link'>
                         <i class="bi bi-person-fill"></i>

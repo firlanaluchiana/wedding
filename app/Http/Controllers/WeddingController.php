@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Wedding;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 Use Alert;
 
 class WeddingController extends Controller
@@ -15,9 +18,15 @@ class WeddingController extends Controller
      */
     public function index(): Response
     {
-        return response()->view('wedding.index', [
-            'weddings' => Wedding::all(),
+        if (Gate::allows('isAdmin')) {
+            return response()->view('wedding.index', [
+                'weddings' => Wedding::all(),
         ]);
+        } else {
+            return response()->view('wedding.index', [
+                'weddings' => Wedding::where('user_id', Auth::user()->id)->get(),
+        ]);
+        }
     }
 
     /**
@@ -33,6 +42,7 @@ class WeddingController extends Controller
      */
     public function store(Request $request)
     {
+        if (Gate::denies('isGuest')) {
         $validated = $request->validate([
             'groom_name' => 'required',
             'bride_name' => 'required',
@@ -44,6 +54,9 @@ class WeddingController extends Controller
             'venue' => 'required',
             'city' => 'required',
         ]);
+
+        $user_id = Auth::user()->id;
+        $validated['user_id'] = $user_id;
 
         $slug = Str::slug($validated['groom_name']);
         $validated['slug'] = $slug;
@@ -58,7 +71,10 @@ class WeddingController extends Controller
 
         Wedding::create($validated);
 
-        return redirect()->route('wedding.index')->withToastSuccess('Project created successfully.');
+        return redirect()->route('wedding.index')->withToastSuccess('Wedding created successfully.');
+        }else {
+            return redirect()->route('wedding.index')->withToastError('Wedding created failed.');
+        }
     }
 
     /**
@@ -92,8 +108,10 @@ class WeddingController extends Controller
      */
     public function update(Request $request, $slug)
     {
+        $user = User::find(Auth::user()->id);
         $wedding = Wedding::where('slug', $slug)->firstOrFail();
 
+        if (Gate::forUser($user)->allows('update-post', $wedding)) {
         $validated = $request->validate([
             'groom_name' => 'required',
             'bride_name' => 'required',
@@ -123,7 +141,10 @@ class WeddingController extends Controller
 
         $wedding->update($validated);
 
-        return redirect()->route('wedding.index')->withToastSuccess('Project updated successfully.');
+        return redirect()->route('wedding.index')->withToastSuccess('Wedding updated successfully.');
+        }else {
+            return redirect()->route('wedding.index')->withToastError('Wedding updated failed.');
+        }
     }
 
     /**
@@ -131,10 +152,15 @@ class WeddingController extends Controller
      */
     public function destroy($slug)
     {
-        $wedding = Wedding::where('slug', $slug)->firstOrFail();
+        if (Gate::allows('isAdmin')) {
 
-        $wedding->delete();
+            $wedding = Wedding::where('slug', $slug)->firstOrFail();
+            $wedding->delete();
 
-        return redirect()->route('wedding.index')->withToastSuccess('Project deleted successfully.');
+            return redirect()->route('wedding.index')->withToastSuccess('Wedding deleted successfully.');
+        } else {
+            return redirect()->route('wedding.index')->withToastError('Wedding deleted failed.');
+        }
+
     }
 }
