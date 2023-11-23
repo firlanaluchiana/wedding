@@ -267,16 +267,16 @@
                         <div class="col-md-12 animate-box">
                             <div class="wrap-testimony">
                                 <div class="owl-carousel-fullwidth">
-                                    @foreach ($storys as $story)
+                                    @foreach ($friends as $friend)
                                         <div class="item">
                                             <div class="testimony-slide active text-center">
                                                 <figure>
-                                                    <img src="{{ secure_url('storage/' . $story->image) }}"
+                                                    <img src="{{ secure_url('storage/' . $friend->image) }}"
                                                         alt="user">
                                                 </figure>
-                                                <span>{{ $story->title }}</span>
+                                                <span>{{ $friend->title }}</span>
                                                 <blockquote>
-                                                    <p>"{{ $story->description }}"</p>
+                                                    <p>"{{ $friend->description }}"</p>
                                                 </blockquote>
                                             </div>
                                         </div>

@@ -52,7 +52,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Gallery</h6>
-                                        <h6 class="font-extrabold mb-0">1</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $gallerys }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Friends</h6>
-                                        <h6 class="font-extrabold mb-0">112</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $friends }}</h6>
                                     </div>
                                 </div>
                             </div>

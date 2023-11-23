@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Story;
+use App\Models\Friend;
 use App\Models\Gallery;
 use App\Models\Wedding;
 use Illuminate\Support\Str;
@@ -96,11 +97,13 @@ class WeddingController extends Controller
         $wedding = Wedding::where('slug', $slug)->first();
         $storys = Story::all()->where('wedding_id', $wedding->id);
         $gallerys = Gallery::all()->where('wedding_id', $wedding->id);
+        $friends = Friend::all()->where('wedding_id', $wedding->id);
 
         return response()->view('wedding.show', [
             'wedding' => $wedding,
             'storys' => $storys,
             'gallerys' => $gallerys,
+            'friends' => $friends,
         ]);
     }
 

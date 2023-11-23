@@ -74,8 +74,8 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="" class='sidebar-link'>
+                <li class="sidebar-item {{ request()->routeIs('friend.*') ? 'active' : '' }}">
+                    <a href="{{ route('friend.index') }}" class='sidebar-link'>
                         <i class="bi bi-people-fill"></i>
                         <span>Friends</span>
                     </a>

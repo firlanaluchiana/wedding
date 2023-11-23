@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{WeddingController, AdminController, HomeController, StoryController, GalleryController};
+use App\Http\Controllers\{WeddingController, AdminController, HomeController, StoryController, GalleryController, FriendController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +45,14 @@ Route::middleware([
     Route::put('wedding/{wedding}/gallery/{gallery}', [GalleryController::class, 'update'])->name('gallery.update');
     Route::delete('wedding/{wedding}/gallery/{gallery}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
     Route::get('wedding/{wedding}/gallery/{gallery}', [GalleryController::class, 'show'])->name('gallery.show');
+
+    Route::get('/friend', [FriendController::class, 'index'])->name('friend.index');
+    Route::get('wedding/{wedding}/friend/create', [FriendController::class, 'create'])->name('friend.create');
+    Route::post('wedding/{wedding}/friend', [FriendController::class, 'store'])->name('friend.store');
+    Route::get('wedding/{wedding}/friend/{friend}/edit', [FriendController::class, 'edit'])->name('friend.edit');
+    Route::put('wedding/{wedding}/friend/{friend}', [FriendController::class, 'update'])->name('friend.update');
+    Route::delete('wedding/{wedding}/friend/{friend}', [FriendController::class, 'destroy'])->name('friend.destroy');
+    Route::get('wedding/{wedding}/friend/{friend}', [FriendController::class, 'show'])->name('friend.show');
 
 });
 
