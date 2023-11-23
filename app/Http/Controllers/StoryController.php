@@ -74,7 +74,7 @@ class StoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Story $story)
+    public function show(Story $story): Response
     {
         //
     }
@@ -82,23 +82,44 @@ class StoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Story $story)
+    public function edit(Wedding $wedding, Story $story): Response
     {
-        //
+        return response()->view('story.edit', [
+            'story' => $story,
+            'wedding' => $wedding,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Story $story)
+    public function update(Request $request, Wedding $wedding, Story $story): RedirectResponse
     {
-        //
+        if (Gate::denies('isGuest')) {
+        $validated = $request->validate([
+            'title' => 'required',
+            'date' => 'required',
+            'description' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+            Storage::delete($story->image);
+            $validated['image'] = $request->file('image')->store('story_images');
+        }
+
+        $story->update($validated);
+
+        return redirect()->route('story.index')->withToastSuccess('Story updated successfully.');
+        }else {
+            return redirect()->route('story.index')->withToastError('Story updated failed.');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Story $story): RedirectResponse
+    public function destroy(Wedding $wedding, Story $story): RedirectResponse
     {
         if (Gate::allows('isAdmin')) {
 

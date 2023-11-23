@@ -33,7 +33,8 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
-                                        {{ $story->wedding->groom_name }}
+                                        {{ $story->wedding->groom_name }} &
+                                        {{ $story->wedding->bride_name }}
                                     </td>
                                     <td>{{ $story->title }}</td>
                                     <td>{{ $story->date }}</td>
@@ -46,11 +47,12 @@
                                     </td>
                                     <td>
                                         <a href="" class="btn btn-success btn-sm"><i class="bi bi-eye"></i></a>
-                                        <a href="" class="btn btn-warning btn-sm">
+                                        <a href="{{ route('story.edit', [$story->wedding->id, $story->id]) }}"
+                                            class="btn btn-warning btn-sm">
                                             <story class="bi bi-pencil-square"></story>
                                         </a>
-                                        <form action="{{ route('story.destroy', $story->id) }}" method="POST"
-                                            class="d-inline">
+                                        <form action="{{ route('story.destroy', [$story->wedding->id, $story->id]) }}"
+                                            method="POST" class="d-inline">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-sm btn-danger"

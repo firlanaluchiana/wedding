@@ -35,7 +35,7 @@ Route::middleware([
     Route::post('wedding/{wedding}/story', [StoryController::class, 'store'])->name('story.store');
     Route::get('wedding/{wedding}/story/{story}/edit', [StoryController::class, 'edit'])->name('story.edit');
     Route::put('wedding/{wedding}/story/{story}', [StoryController::class, 'update'])->name('story.update');
-    Route::delete('story/{story}', [StoryController::class, 'destroy'])->name('story.destroy');
+    Route::delete('wedding/{wedding}/story/{story}', [StoryController::class, 'destroy'])->name('story.destroy');
     Route::get('wedding/{wedding}/story/{story}', [StoryController::class, 'show'])->name('story.show');
 
 });

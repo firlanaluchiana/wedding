@@ -90,15 +90,15 @@ class WeddingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showBySlug(Wedding $wedding, $slug): Response
+    public function showBySlug(Wedding $wedding, Story $story, $slug): Response
     {
-    $wedding = Wedding::where('slug', $slug)->first();
+        $wedding = Wedding::where('slug', $slug)->first();
+        $storys = Story::all()->where('wedding_id', $wedding->id);
 
-    if ($wedding) {
-        return response()->view('wedding.show', ['wedding' => $wedding]);
-        } else {
-        return abort(404);
-        }
+        return response()->view('wedding.show', [
+            'wedding' => $wedding,
+            'storys' => $storys,
+        ]);
     }
 
     /**
@@ -130,6 +130,13 @@ class WeddingController extends Controller
             'groom_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'bride_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'wedding_date' => 'required',
+            'ceremony' => 'required',
+            'ceremony_start' => 'required',
+            'ceremony_end' => 'required',
+            'party' => 'required',
+            'party_start' => 'required',
+            'party_end' => 'required',
+            'street' => 'required',
             'venue' => 'required',
             'city' => 'required',
         ]);

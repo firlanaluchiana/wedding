@@ -145,54 +145,21 @@
                 <div class="row">
                     <div class="col-md-12 col-md-offset-0">
                         <ul class="timeline animate-box">
-                            <li class="animate-box">
-                                <div class="timeline-badge"
-                                    style="background-image:url({{ asset('tehome/images/cpw.jpg') }});"></div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h3 class="timeline-title">First We Meet</h3>
-                                        <span class="date">December 25, 2023</span>
+                            @foreach ($storys as $story)
+                                <li class="{{ $loop->iteration % 2 === 0 ? 'timeline-inverted' : '' }} animate-box">
+                                    <div class="timeline-badge"
+                                        style="background-image:url({{ secure_url('storage/' . $story->image) }});"></div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h3 class="timeline-title">{{ $story->title }}</h3>
+                                            <span class="date">{{ $story->date }}</span>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>{{ $story->description }}</p>
+                                        </div>
                                     </div>
-                                    <div class="timeline-body">
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                            Consonantia, there live the blind texts. Separated they live in
-                                            Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="timeline-inverted animate-box">
-                                <div class="timeline-badge"
-                                    style="background-image:url({{ asset('tehome/images/cpw1.jpg') }});"></div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h3 class="timeline-title">First Date</h3>
-                                        <span class="date">December 28, 2023</span>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                            Consonantia, there live the blind texts. Separated they live in
-                                            Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="animate-box">
-                                <div class="timeline-badge"
-                                    style="background-image:url({{ asset('tehome/images/cpw2.jpg') }});"></div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h3 class="timeline-title">In A Relationship</h3>
-                                        <span class="date">January 1, 2025</span>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                            Consonantia, there live the blind texts. Separated they live in
-                                            Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
