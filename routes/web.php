@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{WeddingController, AdminController, HomeController};
+use App\Http\Controllers\{WeddingController, AdminController, HomeController, StoryController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +29,14 @@ Route::middleware([
     Route::get('/wedding/{slug}/edit', [WeddingController::class, 'edit'])->name('wedding.edit');
     Route::put('/wedding/{slug}', [WeddingController::class, 'update'])->name('wedding.update');
     Route::delete('/wedding/{slug}', [WeddingController::class, 'destroy'])->name('wedding.destroy');
+
+    Route::get('/story', [StoryController::class, 'index'])->name('story.index');
+    Route::get('wedding/{wedding}/story/create', [StoryController::class, 'create'])->name('story.create');
+    Route::post('wedding/{wedding}/story', [StoryController::class, 'store'])->name('story.store');
+    Route::get('wedding/{wedding}/story/{story}/edit', [StoryController::class, 'edit'])->name('story.edit');
+    Route::put('wedding/{wedding}/story/{story}', [StoryController::class, 'update'])->name('story.update');
+    Route::delete('story/{story}', [StoryController::class, 'destroy'])->name('story.destroy');
+    Route::get('wedding/{wedding}/story/{story}', [StoryController::class, 'show'])->name('story.show');
 
 });
 

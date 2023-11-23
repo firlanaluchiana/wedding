@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Wedding;
 use App\Models\User;
+use App\Models\Story;
+use App\Models\Wedding;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 Use Alert;
 
 class WeddingController extends Controller
@@ -40,7 +43,7 @@ class WeddingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         if (Gate::denies('isGuest')) {
         $validated = $request->validate([
@@ -157,12 +160,15 @@ class WeddingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($slug)
+    public function destroy($slug): RedirectResponse
     {
         if (Gate::allows('isAdmin')) {
 
             $wedding = Wedding::where('slug', $slug)->firstOrFail();
+            $story = Story::where('wedding_id', $wedding->id)->firstOrFail();
             $wedding->delete();
+
+            Storage::delete($wedding->groom_image, $wedding->bride_image, $story->image );
 
             return redirect()->route('wedding.index')->withToastSuccess('Wedding deleted successfully.');
         } else {

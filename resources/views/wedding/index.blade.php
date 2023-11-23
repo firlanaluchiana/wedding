@@ -66,7 +66,8 @@
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
-                                    </td>
+                                        <a href="{{ route('story.create', $wedding->id) }}"
+                                            class="btn btn-primary btn-sm"><i class="bi bi-plus-circle"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
