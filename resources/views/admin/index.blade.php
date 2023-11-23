@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Story</h6>
-                                        <h6 class="font-extrabold mb-0">1</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $storys }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -84,10 +84,10 @@
                             <div class="avatar avatar-xl">
                                 <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                             </div>
-                        </div>
-                        <div class="ms-3 name">
-                            <h5 class="font-bold">{{ Auth::user()->name }}</h5>
-                            <h6 class="text-muted mb-0">{{ Auth::user()->name }}</h6>
+                            <div class="ms-3 name">
+                                <h5 class="font-bold">{{ Auth::user()->name }}</h5>
+                                <h6 class="text-muted mb-0">{{ Auth::user()->name }}</h6>
+                            </div>
                         </div>
                     </div>
                 </div>

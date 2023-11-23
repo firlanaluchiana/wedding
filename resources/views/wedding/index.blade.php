@@ -67,7 +67,11 @@
                                             </button>
                                         </form>
                                         <a href="{{ route('story.create', $wedding->id) }}"
-                                            class="btn btn-primary btn-sm"><i class="bi bi-plus-circle"></i></a>
+                                            class="btn btn-primary btn-sm"><i class="bi bi-file-earmark-text-fill"></i></a>
+                                        <a href="{{ route('gallery.create', $wedding->id) }}"
+                                            class="btn btn-primary btn-sm"><i class="bi bi-image-fill"></i></a>
+                                        <a href="{{ route('story.create', $wedding->id) }}"
+                                            class="btn btn-primary btn-sm"><i class="bi bi-people-fill"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -76,6 +80,5 @@
                 </div>
             </div>
         </div>
-
     </section>
 @endsection

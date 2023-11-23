@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{WeddingController, AdminController, HomeController, StoryController};
+use App\Http\Controllers\{WeddingController, AdminController, HomeController, StoryController, GalleryController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +37,14 @@ Route::middleware([
     Route::put('wedding/{wedding}/story/{story}', [StoryController::class, 'update'])->name('story.update');
     Route::delete('wedding/{wedding}/story/{story}', [StoryController::class, 'destroy'])->name('story.destroy');
     Route::get('wedding/{wedding}/story/{story}', [StoryController::class, 'show'])->name('story.show');
+
+    Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
+    Route::get('wedding/{wedding}/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
+    Route::post('wedding/{wedding}/gallery', [GalleryController::class, 'store'])->name('story.store');
+    Route::get('wedding/{wedding}/gallery/{gallery}/edit', [GalleryController::class, 'edit'])->name('gallery.edit');
+    Route::put('wedding/{wedding}/gallery/{gallery}', [GalleryController::class, 'update'])->name('gallery.update');
+    Route::delete('wedding/{wedding}/gallery/{gallery}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+    Route::get('wedding/{wedding}/gallery/{gallery}', [GalleryController::class, 'show'])->name('gallery.show');
 
 });
 

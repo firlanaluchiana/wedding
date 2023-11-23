@@ -67,8 +67,8 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="" class='sidebar-link'>
+                <li class="sidebar-item {{ request()->routeIs('gallery.*') ? 'active' : '' }}">
+                    <a href="{{ route('gallery.index') }}" class='sidebar-link'>
                         <i class="bi bi-image-fill"></i>
                         <span>Gallery</span>
                     </a>

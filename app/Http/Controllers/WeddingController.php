@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Story;
+use App\Models\Gallery;
 use App\Models\Wedding;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -90,14 +91,16 @@ class WeddingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showBySlug(Wedding $wedding, Story $story, $slug): Response
+    public function showBySlug(Wedding $wedding, $slug): Response
     {
         $wedding = Wedding::where('slug', $slug)->first();
         $storys = Story::all()->where('wedding_id', $wedding->id);
+        $gallerys = Gallery::all()->where('wedding_id', $wedding->id);
 
         return response()->view('wedding.show', [
             'wedding' => $wedding,
             'storys' => $storys,
+            'gallerys' => $gallerys,
         ]);
     }
 

@@ -45,7 +45,7 @@
                     <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
                         <h2>Hello!</h2>
                         <h1>{{ $wedding->groom_name }} &amp; {{ $wedding->bride_name }}</h1>
-                        <h3>{{ \Carbon\Carbon::parse($wedding->wedding_date)->format('F jS Y') }}, {{ $wedding->venue }}
+                        <h3>{{ \Carbon\Carbon::parse($wedding->wedding_date)->format('j F Y') }}, {{ $wedding->venue }}
                             {{ $wedding->city }}</h3>
                         <p>We invited you to celebrate our wedding</p>
                     </div>
@@ -152,7 +152,9 @@
                                     <div class="timeline-panel">
                                         <div class="timeline-heading">
                                             <h3 class="timeline-title">{{ $story->title }}</h3>
-                                            <span class="date">{{ $story->date }}</span>
+                                            <span
+                                                class="date">{{ \Carbon\Carbon::parse($story->date)->format('F j, Y') }}
+                                            </span>
                                         </div>
                                         <div class="timeline-body">
                                             <p>{{ $story->description }}</p>
@@ -179,93 +181,16 @@
                 <div class="row row-bottom-padded-md">
                     <div class="col-md-12">
                         <ul id="fh5co-gallery-list">
-
-                            <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/wedding-bg.jpg') }});">
-                                <a href="images/gallery-1.jpg">
-                                    <div class="case-studies-summary">
-                                        <span>14 Photos</span>
-                                        <h2>Two Glas of Juice</h2>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/cpw.jpg') }});">
-                                <a href="#" class="color-2">
-                                    <div class="case-studies-summary">
-                                        <span>30 Photos</span>
-                                        <h2>Timer starts now!</h2>
-                                    </div>
-                                </a>
-                            </li>
-
-
-                            <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/cpw1.jpg') }});">
-                                <a href="#" class="color-3">
-                                    <div class="case-studies-summary">
-                                        <span>90 Photos</span>
-                                        <h2>Beautiful sunset</h2>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/cpw2.jpg') }});">
-                                <a href="#" class="color-4">
-                                    <div class="case-studies-summary">
-                                        <span>12 Photos</span>
-                                        <h2>Company's Conference Room</h2>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/cpw3.jpg') }});">
-                                <a href="#" class="color-3">
-                                    <div class="case-studies-summary">
-                                        <span>50 Photos</span>
-                                        <h2>Useful baskets</h2>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/cpw.jpg') }});">
-                                <a href="#" class="color-4">
-                                    <div class="case-studies-summary">
-                                        <span>45 Photos</span>
-                                        <h2>Skater man in the road</h2>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/cpw1.jpg') }});">
-                                <a href="#" class="color-4">
-                                    <div class="case-studies-summary">
-                                        <span>35 Photos</span>
-                                        <h2>Two Glas of Juice</h2>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/cpw2.jpg') }});">
-                                <a href="#" class="color-5">
-                                    <div class="case-studies-summary">
-                                        <span>90 Photos</span>
-                                        <h2>Timer starts now!</h2>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="one-third animate-box" data-animate-effect="fadeIn"
-                                style="background-image:url({{ asset('tehome/images/cpw3.jpg') }});">
-                                <a href="#" class="color-6">
-                                    <div class="case-studies-summary">
-                                        <span>56 Photos</span>
-                                        <h2>Beautiful sunset</h2>
-                                    </div>
-                                </a>
-                            </li>
+                            @foreach ($gallerys as $gallery)
+                                <li class="one-third animate-box" data-animate-effect="fadeIn"
+                                    style="background-image:url({{ secure_url('storage/' . $gallery->image) }});">
+                                    <a href="images/gallery-1.jpg">
+                                        <div class="case-studies-summary">
+                                            <h2>{{ $gallery->title }}</h2>
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -321,7 +246,6 @@
                                     <span class="counter js-counter" data-from="0" data-to="2345" data-speed="5000"
                                         data-refresh-interval="50">1</span>
                                     <span class="counter-label">Hours Spent</span>
-
                                 </div>
                             </div>
                         </div>
@@ -343,45 +267,20 @@
                         <div class="col-md-12 animate-box">
                             <div class="wrap-testimony">
                                 <div class="owl-carousel-fullwidth">
-                                    <div class="item">
-                                        <div class="testimony-slide active text-center">
-                                            <figure>
-                                                <img src="{{ asset('tehome/images/hinata.jpg') }}" alt="user">
-                                            </figure>
-                                            <span>Hinata Hyuga, via <a href="#" class="twitter">Twitter</a></span>
-                                            <blockquote>
-                                                <p>"Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia, there live the blind texts. Separated they
-                                                    live in Bookmarksgrove right at the coast of the Semantics"</p>
-                                            </blockquote>
+                                    @foreach ($storys as $story)
+                                        <div class="item">
+                                            <div class="testimony-slide active text-center">
+                                                <figure>
+                                                    <img src="{{ secure_url('storage/' . $story->image) }}"
+                                                        alt="user">
+                                                </figure>
+                                                <span>{{ $story->title }}</span>
+                                                <blockquote>
+                                                    <p>"{{ $story->description }}"</p>
+                                                </blockquote>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="testimony-slide active text-center">
-                                            <figure>
-                                                <img src="{{ asset('tehome/images/hinata.jpg') }}" alt="Hinata Hyuga">
-                                            </figure>
-                                            <span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
-                                            <blockquote>
-                                                <p>"Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia, at the coast of the Semantics, a large
-                                                    language ocean."</p>
-                                            </blockquote>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="testimony-slide active text-center">
-                                            <figure>
-                                                <img src="{{ asset('tehome/images/hinata.jpg') }}" alt="Hinata Hyuga">
-                                            </figure>
-                                            <span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
-                                            <blockquote>
-                                                <p>"Far far away, far from the countries Vokalia and Consonantia, there
-                                                    live the blind texts. Separated they live in Bookmarksgrove right at
-                                                    the coast of the Semantics, a large language ocean."</p>
-                                            </blockquote>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
