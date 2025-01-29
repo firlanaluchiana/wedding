@@ -156,8 +156,6 @@ class WeddingController extends Controller
             }
 
         if ($request->hasFile('groom_image', 'bride_image')) {
-            Storage::delete($wedding->groom_images);
-            Storage::delete($wedding->bride_images);
             $validated['groom_image'] = $request->file('groom_image')->store('groom_images');
             $validated['bride_image'] = $request->file('bride_image')->store('bride_images');
         }
